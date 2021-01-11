@@ -1,9 +1,23 @@
 import React from 'react';
+import { Redirect } from "react-router-dom";
+import { connect } from 'react-redux'
 
-const Home = () => {
+const Home = ({ user }) => {
+    if(!user) {
+        return <Redirect to='/login' />
+    }
+
+    const message = `Hey ${user.name} ${user.surname}`;
+
     return (
-        <div>Home is where the heart is</div>
+        <div>
+            <h1>{message}</h1>
+        </div>
     )
 }
 
-export default Home;
+const mapStateToProps = (state) => ({
+    user: state.auth.user
+})
+
+export default connect(mapStateToProps)(Home);

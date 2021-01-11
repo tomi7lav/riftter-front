@@ -1,15 +1,35 @@
 import React from "react"
-import { Router } from "@reach/router"
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
+import { Provider } from 'react-redux';
+import Login from './views/Login';
+import Welcome from './views/Welcome';
+import Register from './views/Register';
 import Home from './views/Home';
-import Users from './views/Users';
+import store from './reducers';
 
-function App() {
-  return (
-    <Router>
-      <Home path="/" />
-      <Users path="users" />
+const App = () => (
+  <Provider store={store}>
+      <Router>
+        <Switch>
+          <Route path="/login">
+            <Login />
+          </Route>
+          <Route path="/register">
+            <Register />
+          </Route>
+          <Route path="/home">
+            <Home />
+          </Route>
+          <Route path="/">
+            <Welcome />
+          </Route>
+      </Switch>
     </Router>
-  );
-}
+  </Provider>
+)
 
 export default App;
