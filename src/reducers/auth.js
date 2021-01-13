@@ -1,6 +1,5 @@
 
 
-
 export const getUserData = () => 
     fetch('http://localhost:3000/user', {
         credentials: 'include',
@@ -15,6 +14,10 @@ export default function authReducer(state = { user: null }, action) {
         return {
             ...state,
             user: action.payload
+        }
+      case 'user/clear':
+        return {
+           user: null
         }
       default:
         return state

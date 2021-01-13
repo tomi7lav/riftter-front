@@ -9,6 +9,7 @@ import Login from './views/Login';
 import Welcome from './views/Welcome';
 import Register from './views/Register';
 import Home from './views/Home';
+import Profile from './views/Profile';
 import store from './reducers';
 
 const App = () => (
@@ -23,6 +24,9 @@ const App = () => (
           </Route>
           <Route path="/home">
             <Home />
+          </Route>
+          <Route path="/profile/:profileId">
+            <Profile />
           </Route>
           <Route path="/">
             <Welcome />

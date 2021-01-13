@@ -4,8 +4,15 @@ import { connect } from 'react-redux';
 import styled from 'styled-components';
 import TopBar from '../components/TopBar';
 import Feed from '../components/Feed';
+import CreatePost from '../components/CreatePost';
 
 const HomeWrapper = styled.div``;
+
+const ContentWrapper = styled.div`
+    width: 600px;
+    position: relative;
+    margin: auto;
+`;
 
 const getPosts = () => 
     fetch('http://localhost:3000/posts', {
@@ -32,7 +39,12 @@ const Home = ({ user }) => {
     return (
        <HomeWrapper>
            <TopBar />
-           <Feed posts={posts} />
+           <ContentWrapper>
+            <CreatePost 
+                    success={() => getPosts().then((posts) => setPosts(posts))} 
+                />
+            <Feed posts={posts} />
+           </ContentWrapper>
        </HomeWrapper>
     )
 }

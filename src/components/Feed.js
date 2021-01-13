@@ -1,32 +1,29 @@
 import React from 'react';
 import styled from 'styled-components';
+import Post from './Post';
 
 const FeedWrapper = styled.div`
-    width: 600px;
-    border: 1px solid;
+    width: 100%;
+    border: 1px solid grey;
     height: 100%;
+    border-bottom: none;
 `;
 
-const Post = styled.div`
-    padding: 15px;
-    border-bottom: 1px solid whitesmoke;
+const NoPosts = styled.div`
+    text-align: center;
 `;
-
-const FeedItem = styled.div``;
 
 const Feed = ({ posts }) => {
     if(!posts || !posts.length) {
         return (
-            <div>No posts yet!</div>
+            <NoPosts>No posts yet!</NoPosts>
         );
     }
 
     return (
         <FeedWrapper>
             {posts.map((post) => (
-                <Post key={post.id}>
-                    {post.body}
-                </Post>
+                <Post key={post.id} post={post} />
             ))}
         </FeedWrapper>
     )

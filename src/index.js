@@ -5,10 +5,10 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import bootstrap from './bootstrap';
 
-bootstrap().then(initialData => {
+bootstrap().then(() => {
   ReactDOM.render(
     <React.StrictMode>
-      <App initialData={initialData} />
+      <App />
     </React.StrictMode>,
     document.getElementById('root')
   );
