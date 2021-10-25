@@ -8,7 +8,7 @@ const FollowButton = styled.button`
 
 
 const getFollowingStatus = (profileId) => {
-    return fetch(`http://localhost:3000/profiles/follow/${profileId}`, {
+    return fetch(`http://localhost:3000/users/follow/${profileId}`, {
         credentials: 'include'
     })
     .then(res => res.json())
@@ -16,11 +16,10 @@ const getFollowingStatus = (profileId) => {
 };
 
 const followRequest = (profileId) => {
-    return fetch(`http://localhost:3000/profiles/follow/${profileId}`, {
+    return fetch(`http://localhost:3000/users/follow/${profileId}`, {
         method: 'PUT',
         credentials: 'include'
     })
-    .then(res => res.json())
     .then(res => {
         console.log({ res })
         return res;
@@ -29,7 +28,7 @@ const followRequest = (profileId) => {
 };
 
 const unfollowRequest = (profileId) => {
-    return fetch(`http://localhost:3000/profiles/follow/${profileId}`, {
+    return fetch(`http://localhost:3000/users/follow/${profileId}`, {
         method: 'DELETE',
         credentials: 'include'
     })

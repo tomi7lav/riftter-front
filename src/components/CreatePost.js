@@ -1,10 +1,21 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
+import Button from '@mui/material/Button';
 
 const CreateTextarea = styled.textarea`
     height: 135px;
     resize: none;
     margin-bottom: 5px;
+    font-family: 'Roboto';
+    box-shadow: 0 2px 2px rgb(0 0 0 / 0.2);
+    border: none;
+    padding: 3px;
+    border-radius: 4px;
+
+    &:focus {
+        outline: none !important;
+        box-shadow: 0 0 5px grey;
+    }
 `;
 
 const CreateForm = styled.form`
@@ -18,10 +29,6 @@ const Actions = styled.div`
     justify-content: flex-end;
 `;
 
-const SubmitButton = styled.button`
-    width:100px;
-    height:30px;
-`;
 
 const createPostRequest = (text) => {
     return fetch('http://localhost:3000/posts', {
@@ -59,7 +66,7 @@ const CreatePost = ({ success }) => {
                 onChange={e => setPost(e.target.value)}
             />
             <Actions>
-                <SubmitButton type="submit" disabled={!post}>Create</SubmitButton>
+                <Button type="submit" variant="contained" color="inherit" sx={{ marginTop: '5px' }} disabled={!post}>Create</Button>
             </Actions>
         </CreateForm>
     )

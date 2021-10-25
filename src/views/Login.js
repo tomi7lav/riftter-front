@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { useHistory } from "react-router-dom";
+import { TextField, Button, Stack, Typography, Container} from '@mui/material';
 
 const Login = ({ setUser }) => {
     const [username, setUsername] = useState();
@@ -23,41 +24,59 @@ const Login = ({ setUser }) => {
             })
         })
         .then(res => res.json())
-        .then((user) => {
-            setUser(user)
-           
+        .then((response) => {
+            if(!response.success){
+                return setError(response.message)
+            
+            }
+            
+            setUser(response.user)
             history.push("/home");
         })
-        .catch((err) => setError(err));
+        .catch((err) => {
+            console.log(err)
+        });
     }
 
 
     return (
-        <div>
-            <h1>Please submit your login credentials</h1>
-            <form onSubmit={onSubmit}>
-                <p>
-                    <label>Username:</label>
-                    <input 
-                        type="text" 
-                        name="username" 
-                        onChange={e => setUsername(e.target.value)}
+        <Container sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: "column", height: '70%' }}>
+            <Typography variant="h1" compomnent="h1" sx={{ fontWeight: 'bold', marginBottom: '30px' }}>Riftter</Typography>
+            <Stack
+                component="form"
+                sx={{
+                    '& > :not(style)': { m: 1, width: '35ch' },
+                }}
+                onSubmit={onSubmit}
+                noValidate
+                autoComplete="off"
+            >
+
+                <TextField 
+                        variant="outlined"
+                        label="name"
+                        name="name" 
+                        sx={{ backgroundColor: 'white', boxShadow: 'inset 0 0 2px', borderRadius: '5px' }}
+                        inputProps={{ 
+                            onChange: e => setUsername(e.target.value)
+                        }}
+                       
                     />
-                </p>
-                <p>
-                    <label>Password:</label>
-                    <input 
-                        type="text"
-                        name="password"
-                        onChange={e => setPassword(e.target.value)}
+                <TextField 
+                        variant="outlined"
+                        label="surname"
+                        name="surname"
+                        sx={{ backgroundColor: 'white', boxShadow: 'inset 0 0 2px' }}
+                        inputProps={{ 
+                            onChange: e => setPassword(e.target.value)
+                        }}
+                       
                     />
-                </p>
-                {/* {error && <span>{error}</span>} */}
-                <p>
-                    <input type="submit" value="Login" />
-                </p>
-            </form>
-        </div>
+             
+                {error && <span>{error}</span>}
+                <Button type="submit" variant="contained" color="secondary">Log in</Button>
+            </Stack>
+       </Container>
     )
 }
 
