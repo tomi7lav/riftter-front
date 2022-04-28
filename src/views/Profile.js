@@ -58,42 +58,42 @@ const Profile = ({ user }) => {
         <>
             <TopBar />
             <Container width="960px">
-            <Grid container columns={9} spacing={2} sx={{ marginTop: '80px' }}>
-                <Grid item xs={3}>
-                    <InfoWrapper>
-                        <Stack key="name" direction='row' sx={{ margin: '5px' }}>
-                            <Typography variant="body1" sx={{ fontWeight: 'bold', marginRight: '5px' }}>Name: </Typography>
-                            <Typography variant="body1" >{profileData.name}</Typography>
-                        </Stack>
-                        <Stack key="surname" direction='row' sx={{ margin: '5px' }}>
-                            <Typography variant="body1" sx={{ fontWeight: 'bold', marginRight: '5px' }}>Surname: </Typography>
-                            <Typography variant="body1" >{profileData.surname}</Typography>
-                        </Stack>
-                        <Stack key="gender" direction='row' sx={{ margin: '5px' }}>
-                            <Typography variant="body1" sx={{ fontWeight: 'bold', marginRight: '5px' }}>Gender: </Typography>
-                            <Typography variant="body1" >{profileData.Profile.gender}</Typography>
-                        </Stack>
-                        <Stack key="age" direction='row' sx={{ margin: '5px' }}>
-                            <Typography variant="body1" sx={{ fontWeight: 'bold', marginRight: '5px' }}>Age: </Typography>
-                            <Typography variant="body1" >{profileData.Profile.age}</Typography>
-                        </Stack>
-                        <Stack key="occupation" direction='row' sx={{ margin: '5px' }}>
-                            <Typography variant="body1" sx={{ fontWeight: 'bold', marginRight: '5px' }}>Occupation: </Typography>
-                            <Typography variant="body1" >{profileData.Profile.occupation}</Typography>
-                        </Stack>
-                        <Stack key="bio" direction='row' sx={{ margin: '5px' }}>
-                            <Typography variant="body1" sx={{ fontWeight: 'bold', marginRight: '5px' }}>Bio: </Typography>
-                            <Typography variant="body1" >{profileData.Profile.bio}</Typography>
-                        </Stack>
-                    </InfoWrapper>
-                    <ActionsWrapper>
-                    {(user.id !== profileData.id) && <Follow profileId={profileId} />}
-                    </ActionsWrapper>
+                <Grid container columns={9} spacing={2} sx={{ marginTop: '80px' }}>
+                    <Grid item xs={3}>
+                        <InfoWrapper>
+                            <Stack key="name" direction='row' sx={{ margin: '5px' }}>
+                                <Typography variant="body1" sx={{ fontWeight: 'bold', marginRight: '5px' }}>Name: </Typography>
+                                <Typography variant="body1" >{profileData.name}</Typography>
+                            </Stack>
+                            <Stack key="surname" direction='row' sx={{ margin: '5px' }}>
+                                <Typography variant="body1" sx={{ fontWeight: 'bold', marginRight: '5px' }}>Surname: </Typography>
+                                <Typography variant="body1" >{profileData.surname}</Typography>
+                            </Stack>
+                            <Stack key="gender" direction='row' sx={{ margin: '5px' }}>
+                                <Typography variant="body1" sx={{ fontWeight: 'bold', marginRight: '5px' }}>Gender: </Typography>
+                                <Typography variant="body1" >{profileData.Profile.gender}</Typography>
+                            </Stack>
+                            <Stack key="age" direction='row' sx={{ margin: '5px' }}>
+                                <Typography variant="body1" sx={{ fontWeight: 'bold', marginRight: '5px' }}>Age: </Typography>
+                                <Typography variant="body1" >{profileData.Profile.age}</Typography>
+                            </Stack>
+                            <Stack key="occupation" direction='row' sx={{ margin: '5px' }}>
+                                <Typography variant="body1" sx={{ fontWeight: 'bold', marginRight: '5px' }}>Occupation: </Typography>
+                                <Typography variant="body1" >{profileData.Profile.occupation}</Typography>
+                            </Stack>
+                            <Stack key="bio" direction='row' sx={{ margin: '5px' }}>
+                                <Typography variant="body1" sx={{ fontWeight: 'bold', marginRight: '5px' }}>Bio: </Typography>
+                                <Typography variant="body1" >{profileData.Profile.bio}</Typography>
+                            </Stack>
+                        </InfoWrapper>
+                        <ActionsWrapper>
+                        {(user.id !== profileData.id) && <Follow profileId={profileId} />}
+                        </ActionsWrapper>
+                    </Grid>
+                    <Grid item xs={6} sx={{ display: 'flex', justifyContent: 'flex-end', padding: '0px 20px' }}>
+                        <Feed posts={userPosts} deletePost={deletePost}/>
+                    </Grid>
                 </Grid>
-                <Grid item xs={6} sx={{ display: 'flex', justifyContent: 'flex-end', padding: '0px 20px' }}>
-                    <Feed posts={userPosts} deletePost={deletePost}/>
-                </Grid>
-            </Grid>
             </Container>
            
         </>
